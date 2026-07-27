@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Design token values.
+ *
+ * FOUNDATION/PHASE-2 PLACEHOLDER — these are intentionally neutral
+ * (grayscale) values so the token system (tailwind.config.ts) has
+ * something real to compile against and components can be fully built and
+ * previewed. They are NOT the approved Figma palette.
+ *
+ * Per the locked Figma Inspection Workflow (v3, Decision 1), real values
+ * are pulled section-by-section from exported Figma frames as each section
+ * is implemented — these placeholders get replaced then, never guessed at.
+ * Swapping them is a one-file change; every component below already
+ * consumes tokens, never raw hex/px values.
+ */
+:root {
+  /* Color tokens */
+  --color-background: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f7f7f5;
+  --color-ink: #0a0a0a;
+  --color-ink-muted: #6b6b6b;
+  --color-ink-inverse: #ffffff;
+  --color-accent: #2563eb;
+  --color-accent-muted: #3d3d3d;
+  --color-border: #e5e5e5;
+  --color-border-strong: #cccccc;
+  --color-overlay: rgb(10 10 10 / 60%);
+  --color-focus: #0a0a0a;
+
+  /* Radius tokens */
+  --radius-token: 0.5rem;
+  --radius-token-sm: 0.25rem;
+  --radius-token-lg: 1rem;
+
+  /* Shadow tokens */
+  --shadow-token-sm: 0 1px 2px rgb(10 10 10 / 6%);
+  --shadow-token-md: 0 8px 24px rgb(10 10 10 / 8%);
+  --shadow-token-lg: 0 24px 64px rgb(10 10 10 / 12%);
+
+  /* Layout tokens */
+  --nav-height: 4.5rem;
+  --container-max: 80rem; /* 1280px */
+  --container-narrow-max: 48rem; /* 768px */
+
+  /* Font family variables populated by next/font in app/layout.tsx. */
+  --font-display: var(--font-display-temp, ui-sans-serif, system-ui, sans-serif);
+  --font-body: var(--font-body-temp, ui-sans-serif, system-ui, sans-serif);
+  --font-mono: ui-monospace, "SFMono-Regular", monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Every anchor-navigable section reserves space for the sticky Navbar
+   (v2 §7/§11 — anchor-link focus management + no content hidden behind
+   the sticky header on jump). */
+section[id],
+main[id] {
+  scroll-margin-top: var(--nav-height);
+}
+
+::selection {
+  background-color: var(--color-ink);
+  color: var(--color-ink-inverse);
+}
+
+/* Base typography layer — headings/body default to token-driven type
+   scale + font families so components don't need to repeat these classes
+   individually. Actual Figma-matched values still pending per section. */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+
+  p {
+    font-family: var(--font-body);
+    color: var(--color-ink-muted);
+  }
+
+  a {
+    color: inherit;
+  }
+
+  button {
+    font-family: var(--font-body);
+  }
+}
+
+/* Consistent, visible focus-ring token used by every interactive element
+   instead of the browser default or a suppressed outline (a11y plan,
+   v2 §11). Applies only for keyboard focus, not mouse clicks. */
+@layer utilities {
+  .focus-ring {
+    outline: none;
+  }
+
+  .focus-ring:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+    border-radius: var(--radius-token-sm);
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Skip link becomes visible on keyboard focus (a11y plan, v2 §11 —
+     "skip-to-content link becomes more important" on a long single-page
+     scroll). */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 100;
+    background-color: var(--color-ink);
+    color: var(--color-ink-inverse);
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-token-sm);
+    transition: top 0.2s ease;
+  }
+
+  .skip-link:focus {
+    top: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
