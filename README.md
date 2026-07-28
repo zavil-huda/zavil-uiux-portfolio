@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/zavil-huda/zavil-uiux-portfolio/main/public/github/hero-banner.png" alt="Zavil Huda Quraishi Hero Banner" width="100%" />
+<img src="public/github/hero-banner.png" alt="Hero Banner" width="100%">
 
 <br>
 
@@ -54,7 +54,7 @@ https://zavil-uiux-portfolio.vercel.app
 
 <p align="center">
 
-<img src="https://raw.githubusercontent.com/zavil-huda/zavil-uiux-portfolio/main/public/github/portfolio-preview.png" alt="Portfolio Preview" width="100%" />
+<img src="public/github/portfolio-preview.png" alt="Portfolio Preview" width="100%">
 
 </p>
 
@@ -83,8 +83,7 @@ Every design decision supports the overall user experience.
 
 <p align="center">
 
-<img src="https://raw.githubusercontent.com/zavil-huda/zavil-uiux-portfolio/main/public/github/showcase.png" alt="Project Showcase" width="100%" />
-
+<img src="public/github/showcase.png" alt="Project Showcase" width="100%">
 </p>
 
 ---
@@ -324,7 +323,7 @@ https://github.com/zavil-huda
 
 <p align="center">
 
-<img src="https://raw.githubusercontent.com/zavil-huda/zavil-uiux-portfolio/main/public/github/social-preview.png" width="100%" alt="Social Preview"/>
+<img src="public/github/social-preview.png" width="100%" alt="Social Preview"/>
 
 </p>
 
@@ -347,3 +346,11 @@ UI/UX Designer • Product Thinker
 © 2026 Zavil Huda Quraishi. All Rights Reserved.
 
 </div>
+
+---
+
+<p align="center">
+
+Made with thoughtful design, attention to detail, and a passion for creating meaningful digital experiences.
+
+</p>
